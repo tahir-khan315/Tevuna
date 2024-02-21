@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./input.css" />
+  <style type="text/tailwindcss">
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    .accordian-header .activeIcon {
+      @apply hidden;
+    }
+
+    .accordian-header.active .inactiveIcon {
+      @apply hidden;
+    }
+
+    .accordian-header.active .activeIcon {
+      @apply block;
+    }
+
+    @layer components {
+      .menu-items {
+        @apply font-poppins text-base font-medium text-primary hover:text-secondary  visited:font-bold transition-all duration-100 ease-linear;
+      }
+      .btn {
+        @apply hover:scale-105 transition-all duration-200 ease-linear hover:translate-y-1;
+      }
+      .accordian-header {
+        @apply py-5 px-4 cursor-pointer border-b-[1px] border-secondary;
+      }
+      .accordian-body {
+        @apply max-h-0 overflow-hidden transition-all duration-200 ease-out;
+      }
+      .items {
+        @apply px-4 py-4 shadow-md rounded-md flex flex-col gap-3 basis-[25%] flex-grow
+      }
+    }
+  </style>
+  
+  <script>
+    tailwind.config = {
+      content: ['./*.html'],
+      theme: {
+        screens: {
+          sm: '768px',      
+          md: '1024px',      
+          lg: '1280px',      
+          xl: '1440px',      
+        },
+        fontSize: {
+          sm: '0.8rem',
+          base: '1rem',
+          xl: '1.25rem',
+          'h1': '2.25rem',
+          'h2': '1.625rem',
+          'h3': '1.25rem',
+        },
+        extend: {
+          colors: {
+            primary: '#102E52',
+            secondary: "#597895",
+            bgColor: '#DEE4EA'
+          },
+        fontFamily: {
+          'poppins': ['Poppins', 'sans-serif']
+        },
+        animation: {
+          fade: 'fadeIn .5s ease-in-out',
+        },
+
+        keyframes: {
+          fadeIn: {
+            from: { opacity: 0 },
+            to: { opacity: 1 },
+          },
+        },
+        },
+      },
+      plugins: [],
+}
+  </script>
+</head>
+<body>
+    <section id="Sign-up">
+        <div class="container max-w-[400px] flex flex-col gap-6 rounded-md px-8 py-8 bg-primary absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] mx-4 md:mx-0">
+            <h1 id="title" class="text-white text-[32px] font-bold text-center mb-8">Sign Up</h1>
+            <form id="form" action="./login.html" method="post" class="flex flex-col gap-4">
+                <div id="name-field" class="flex flex-row items-center justify-start bg-white gap-x-3 rounded">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Name" name="name" id="name" autocomplete="given-name" required class="w-[100%] py-2 text-black placeholder-black rounded border-none outline-none 
+                    ">
+                </div>
+
+                <div class="flex flex-row items-center justify-start bg-white gap-x-3 rounded">
+                  <i class="fa-solid fa-envelope"></i>
+                  <input type="email" placeholder="Email" name="email" id="email" autocomplete="email" required class="w-[100%] py-2 text-black placeholder-black rounded border-none outline-none 
+                  ">
+              </div>
+
+              <div class="flex flex-row items-center justify-start bg-white gap-x-3 rounded">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" placeholder="password" name="password" id="password" minlength="6" maxlength="20" required class="w-[100%] py-2 text-black placeholder-black rounded border-none outline-none 
+                ">
+              </div>
+
+            <div class="flex flex-row gap-3 items-center mt-8">
+              <button id="signupbtn" type="submit" class="bg-white rounded-full px-8 py-3 font-semibold hover:scale-105 transition-all duration-300 linear">Sign up</button>
+              <!-- <button id="signinbtn" type="submit"  class="bg-transparent border-2 border-white text-white rounded-full px-8 py-3 font-semibold hover:scale-105 transition-all duration-300 linear">Sign in</button> -->
+            </div>
+            </form>
+            <p class="text-gray-50">Don't have an account? <a href="./login.html" class="font-bold text-2xl text-white">Login Now</a></p>
+        </div>
+
+        <div id="displayData" class="container mx-auto flex flex-row gap-6 flex-wrap py-6">
+          
+        </div>
+    </section>
+    <script src="./singup.js"></script>
+</body>
+</html>

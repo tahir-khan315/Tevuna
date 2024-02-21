@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./input.css" />
+    <style type="text/tailwindcss">
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      .accordian-header .activeIcon {
+        @apply hidden;
+      }
+
+      .accordian-header.active .inactiveIcon {
+        @apply hidden;
+      }
+
+      .accordian-header.active .activeIcon {
+        @apply block;
+      }
+
+      @layer components {
+        .menu-items {
+          @apply font-poppins text-base font-medium text-primary hover:text-secondary  visited:font-bold transition-all duration-100 ease-linear;
+        }
+        .btn {
+          @apply hover:scale-105 transition-all duration-200 ease-linear hover:translate-y-1;
+        }
+        .accordian-header {
+          @apply py-5 px-4 cursor-pointer border-b-[1px] border-secondary;
+        }
+        .accordian-body {
+          @apply max-h-0 overflow-hidden transition-all duration-200 ease-out;
+        }
+      }
+    </style>
+    <!-- <script src="./tailwind.config.js"></script> -->
+    <script src="./script.js" defer></script>
+    <script>
+      tailwind.config = {
+  content: ['./*.html'],
+  theme: {
+    screens: {
+      sm: '768px',      
+      md: '1024px',      
+      lg: '1280px',      
+      xl: '1440px',      
+    },
+    fontSize: {
+      sm: '0.8rem',
+      base: '1rem',
+      xl: '1.25rem',
+      'h1': '2.25rem',
+      'h2': '1.625rem',
+      'h3': '1.25rem',
+    },
+    extend: {
+      colors: {
+        primary: '#102E52',
+        secondary: "#597895",
+        bgColor: '#DEE4EA'
+      },
+    fontFamily: {
+      'poppins': ['Poppins', 'sans-serif']
+    },
+    animation: {
+      fade: 'fadeIn .5s ease-in-out',
+    },
+
+    keyframes: {
+      fadeIn: {
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+      },
+    },
+    },
+  },
+  plugins: [],
+}
+    </script>
+    <title>Tevuna</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <header id="header" class="md:sticky md:top-0 bg-white">
+      <nav>
+        <div
+          class="flex flex-row justify-between py-[28px] px-[16px] md:px-[100px]"
+        >
+          <a href="./index.html"><img src="./Assets/logo.svg" alt="logo" /></a>
+          <div
+            class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[50vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5"
+          >
+            <ul
+              class="flex md:flex-row flex-col md:items-center gap-4 md:gap-[40px]"
+            >
+              <li><a href="index.html" class="menu-items">Home</a></li>
+              <li>
+                <a href="#services" class="menu-items scroll-smooth"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a href="#casestudies" class="menu-items">Case Studies</a>
+              </li>
+              <li><a href="#contactus" class="menu-items">Contact</a></li>
+              <li><a href="./signup.html" class="menu-items">Sign Up</a></li>
+              <li><a href="./login.html" class="menu-items">Sign In</a></li>
+            </ul>
+          </div>
+          <ion-icon
+            onclick="onToggleMenu(this)"
+            name="menu"
+            id="ionicon"
+            class="text-3xl cursor-pointer md:hidden"
+          ></ion-icon>
+        </div>
+      </nav>
+    </header>
+
+    <!-- hero section -->
+    <section
+      style="
+        background-image: url(./Assets/herobg.png);
+        background-attachment: fixed;
+      "
+      class="w-full bg-no-repeat bg-cover"
+    >
+      <div class="flex flex-col md:flex-row">
+        <div
+          class="hidden md:block w-full md:w-1/2"
+          style="
+            background-image: url(./Assets/heroleft.jpg);
+            background-size: cover;
+          "
+        ></div>
+        <div
+          class="w-full md:w-1/2 md:items-start items-center flex flex-col gap-[20px] py-[200px] px-[24px] md:px-0 md:pl-[70px] md:pr-[101px]"
+        >
+          <h1
+            class="font-poppins text-h1 font-extrabold text-primary text-center md:text-left"
+          >
+            BOUTIQUE LITIGATION SUPPORT FIRM
+          </h1>
+          <p
+            class="font-poppins font-semibold text-[18px] text-secondary text-center md:text-left"
+          >
+            Specializing in Fraud, Asset Recovery, Cross Border Investigation,
+            Financial Intelligence & OSINT
+          </p>
+          <a
+            href="#"
+            class="btn w-[139px] mt-[6px] text-center font-poppins text-base font-semibold bg-primary text-white px-[5px] py-[6px] leading-8"
+            >Contact Us</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section
+      id="services"
+      class="bg-bgColor py-[96px] px-4 sm:px-[80px] xl:px-[142px]"
+    >
+      <div>
+        <div class="flex flex-col items-center gap-4">
+          <h1
+            class="font-poppins text-h1 font-extrabold text-primary text-center uppercase"
+          >
+            Services
+          </h1>
+          <p
+            class="font-poppins font-medium text-base text-secondary text-center"
+          >
+            We help you speed up or reverse the outcome of a proceeding with
+            high-level insights
+          </p>
+        </div>
+
+        <div
+          class="container mx-auto flex flex-col gap-[24px] mt-[60px] px-4 md:px-0 md:flex-row md:items-center sm:gap-[48px] xl:gap-[72px]"
+        >
+          <div class="w-full md:w-1/2">
+            <img
+              src="./Assets/SanctionsCompliance.webp"
+              alt="SanctionsCompliance"
+              class="w-full"
+            />
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col items-start gap-[10px]">
+            <h2 class="font-poppins text-primary text-h2 font-semibold">
+              Sanctions Compliance
+            </h2>
+            <h3 class="font-poppins text-primary text-h3 font-medium">
+              Stay Ahead of Sanctions
+            </h3>
+            <hr class="w-full h-[1px] my-4 bg-secondary border-0" />
+            <p class="font-poppins text-secondary text-base md:mt-[4px]">
+              TevunAI discovery any potential sanctions evasion. With deep
+              expertise in identifying violations, our AI-driven solutions
+              provide detailed insights into complex commercial transactions,
+              bill of lading, shipments, and more, detecting also indirect
+              sanctions evasion through triangulations and satellite countries.
+            </p>
+            <a
+              href="#"
+              class="btn text-center font-poppins text-base font-semibold bg-primary text-white px-[32px] py-[16px] mt-5"
+              >Ensure Compliance Today</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="container mx-auto flex flex-col gap-[24px] mt-[72px] px-4 md:px-0 md:flex-row md:items-center sm:gap-[48px] xl:gap-[72px]"
+        >
+          <div class="w-full md:w-1/2 md:order-2">
+            <img
+              src="./Assets/LitigationSupport.webp"
+              alt="SanctionsCompliance"
+              class="w-full"
+            />
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col items-start gap-[10px]">
+            <h2 class="font-poppins text-primary text-h2 font-semibold">
+              Litigation Support
+            </h2>
+            <h3 class="font-poppins text-primary text-h3 font-medium">
+              Uncover Truth, Support Justice: Litigation Support Redefined
+            </h3>
+            <hr class="w-full h-[1px] my-4 bg-secondary border-0" />
+            <p class="font-poppins text-secondary text-base md:mt-[4px]">
+              TevunAI is your ally in the courtroom, providing plaintiffs and
+              defendants with crucial evidence and robust support. We specialize
+              in uncovering key information that validates or disproves
+              arguments, assisting in securing higher settlements or avoiding
+              judgments with our comprehensive investigative capabilities.
+            </p>
+            <a
+              href="#"
+              class="btn text-center font-poppins text-base font-semibold bg-primary text-white px-[32px] py-[16px] mt-5"
+              >Discover Legal Support</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="container mx-auto flex flex-col gap-[24px] mt-[72px] px-4 md:px-0 md:flex-row md:items-center sm:gap-[48px] xl:gap-[72px]"
+        >
+          <div class="w-full md:w-1/2">
+            <img
+              src="./Assets/LawEnforcementSupport.webp"
+              alt="SanctionsCompliance"
+              class="w-full"
+            />
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col items-start gap-[10px]">
+            <h2 class="font-poppins text-primary text-h2 font-semibold">
+              Law Enforcement Support
+            </h2>
+            <h3 class="font-poppins text-primary text-h3 font-medium">
+              Fighting Crime, Empowering Authorities
+            </h3>
+            <hr class="w-full h-[1px] my-4 bg-secondary border-0" />
+            <p class="font-poppins text-secondary text-base md:mt-[4px]">
+              TevunAI partners with law enforcement agencies, leveraging
+              advanced AI to dismantle criminal networks, locate suspects, and
+              combat financial crimes. Our customized solutions are instrumental
+              in detecting tax evasion, fraud, and more, equipping authorities
+              with cutting-edge investigative tools.
+            </p>
+            <a
+              href="#"
+              class="btn text-center font-poppins text-base font-semibold bg-primary text-white px-[32px] py-[16px] mt-5"
+              >Explore Custom Solutions</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="container mx-auto flex flex-col gap-[24px] mt-[72px] px-4 md:px-0 md:flex-row md:items-center sm:gap-[48px] xl:gap-[72px]"
+        >
+          <div class="w-full md:w-1/2 md:order-2">
+            <img
+              src="./Assets/CorporateandIndividualDueDiligence.webp"
+              alt="SanctionsCompliance"
+              class="w-full"
+            />
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col items-start gap-[10px]">
+            <h2 class="font-poppins text-primary text-h2 font-semibold">
+              Corporate and Individual Due Diligence
+            </h2>
+            <h3 class="font-poppins text-primary text-h3 font-medium">
+              Due Diligence Made Seamless for Corporations and Individuals
+            </h3>
+            <hr class="w-full h-[1px] my-4 bg-secondary border-0" />
+            <p class="font-poppins text-secondary text-base md:mt-[4px]">
+              At TevunAI, we revolutionize Due Diligence for both corporations
+              and individuals using proprietari AI. We significantly reduce
+              costs and time, ensuring compliance with complex regulations. Just
+              enter the name of a company or individual to receive a
+              comprehensive report covering everything from corporate structures
+              to reputational risks, all assessed by our advanced 'reputation
+              meter'.
+            </p>
+            <a
+              href="#"
+              class="btn text-center font-poppins text-base font-semibold bg-primary text-white px-[32px] py-[16px] mt-5"
+              >Explore Our Solutions</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="container mx-auto flex flex-col gap-[24px] mt-[72px] px-4 md:px-0 md:flex-row md:items-center sm:gap-[48px] xl:gap-[72px]"
+        >
+          <div class="w-full md:w-1/2">
+            <img
+              src="./Assets/CustomOpenSourceInvestigations.webp"
+              alt="SanctionsCompliance"
+              class="w-full"
+            />
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col items-start gap-[10px]">
+            <h2 class="font-poppins text-primary text-h2 font-semibold">
+              Custom Open Source Investigations
+            </h2>
+            <h3 class="font-poppins text-primary text-h3 font-medium">
+              Tailored Investigations, Unmatched Insights
+            </h3>
+            <hr class="w-full h-[1px] my-4 bg-secondary border-0" />
+            <p class="font-poppins text-secondary text-base md:mt-[4px]">
+              TevunAI offers specialized and custom investigations tailored to
+              specific purposes. Whether you need a one-time in-depth analysis
+              or a specialized package integrated with TevunAI for ongoing
+              autonomous investigations, we cater to your unique requirements.
+            </p>
+            <a
+              href="#"
+              class="btn text-center font-poppins text-base font-semibold bg-primary text-white px-[32px] py-[16px] mt-5"
+              >Initiate Your Custom Investigation</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section id="casestudies" class="py-[96px] px-4 sm:px-[80px] xl:px-[100px]">
+      <div
+        class="container mx-auto flex flex-col gap-[50px] md:gap-[80px] xl:gap-[140px] md:flex-row md:items-start"
+      >
+        <div class="w-full md:w-[45%] relative">
+          <img src="./Assets/CASESTUDIES.webp" alt="casestudy" class="w-full" />
+          <img
+            src="./Assets/image12.webp"
+            alt="handshake"
+            class="absolute bottom-0 right-0"
+          />
+          <img
+            src="./Assets/image9.webp"
+            alt=""
+            class="absolute bottom-20 -right-0 md:-right-10"
+          />
+        </div>
+        <div class="w-full flex flex-col gap-[16px] md:w-[55%]">
+          <h1
+            class="font-poppins text-h1 font-extrabold text-primary uppercase"
+          >
+            case studies
+          </h1>
+          <div class="flex flex-col">
+            <!-- accordian-1 -->
+            <div
+              class="accordian-header select-none flex flex-row justify-between items-center"
+            >
+              <h3 class="text-primary font-poppins font-semibold text-[22px]">
+                Government Contract Breach
+              </h3>
+              <span>
+                <img
+                  src="./Assets/minusicon.svg"
+                  alt="minus"
+                  class="activeIcon"
+                />
+                <img
+                  src="./Assets/plusicon.svg"
+                  alt="plus"
+                  class="inactiveIcon"
+                />
+              </span>
+            </div>
+            <div class="accordian-body">
+              <div class="py-5 px-4 flex flex-col space-y-4">
+                <p class="font-poppins text-base text-secondary">
+                  The client lost a mining concession in a South American
+                  country to a less qualified candidate. Investigated the
+                  cluster of companies connected to the candidate and found
+                  government commission members benefiting from one of the
+                  companies.
+                </p>
+                <p class="font-poppins text-base text-secondary">
+                  These members were linked to the political fringe of the
+                  former President of the country. Due to the competitor's
+                  interests in the USA and Europe and the high corruption level
+                  in the country, the investigation focused on government
+                  officials connected to the client's counterpart.
+                </p>
+                <p class="font-poppins text-base text-secondary">
+                  A comprehensive report on the corrupt activities of the former
+                  President reached a US Congressional Committee. The report was
+                  used as a primary source to sanction the former President
+                  under the Magnitsky Act, leading to the client being able to
+                  resume their concession while the counterpart couldn't engage
+                  in business with the former President.
+                </p>
+              </div>
+            </div>
+            <!-- accordian-2 -->
+            <div
+              class="accordian-header select-none flex flex-row justify-between items-center"
+            >
+              <h3 class="text-primary font-poppins font-semibold text-[22px]">
+                Unfair Competition
+              </h3>
+              <span>
+                <img
+                  src="./Assets/minusicon.svg"
+                  alt="minus"
+                  class="activeIcon"
+                />
+                <img
+                  src="./Assets/plusicon.svg"
+                  alt="plus"
+                  class="inactiveIcon"
+                />
+              </span>
+            </div>
+            <div class="accordian-body">
+              <div class="py-5 px-4 flex flex-col space-y-4">
+                <p class="font-poppins text-base text-secondary">
+                  The client lost a mining concession in a South American
+                  country to a less qualified candidate. Investigated the
+                  cluster of companies connected to the candidate and found
+                  government commission members benefiting from one of the
+                  companies.
+                </p>
+                <p class="font-poppins text-base text-secondary">
+                  These members were linked to the political fringe of the
+                  former President of the country. Due to the competitor's
+                  interests in the USA and Europe and the high corruption level
+                  in the country, the investigation focused on government
+                  officials connected to the client's counterpart.
+                </p>
+                <p class="font-poppins text-base text-secondary">
+                  A comprehensive report on the corrupt activities of the former
+                  President reached a US Congressional Committee. The report was
+                  used as a primary source to sanction the former President
+                  under the Magnitsky Act, leading to the client being able to
+                  resume their concession while the counterpart couldn't engage
+                  in business with the former President.
+                </p>
+              </div>
+            </div>
+            <!-- accordian-3 -->
+            <div
+              class="accordian-header select-none flex flex-row justify-between items-center"
+            >
+              <h3 class="text-primary font-poppins font-semibold text-[22px]">
+                Multi Billion Asset Recovery
+              </h3>
+              <span>
+                <img
+                  src="./Assets/minusicon.svg"
+                  alt="minus"
+                  class="activeIcon"
+                />
+                <img
+                  src="./Assets/plusicon.svg"
+                  alt="plus"
+                  class="inactiveIcon"
+                />
+              </span>
+            </div>
+            <div class="accordian-body">
+              <div class="py-5 px-4 flex flex-col space-y-4">
+                <p class="font-poppins text-base text-secondary">
+                  The client lost a mining concession in a South American
+                  country to a less qualified candidate. Investigated the
+                  cluster of companies connected to the candidate and found
+                  government commission members benefiting from one of the
+                  companies.
+                </p>
+                <p class="font-poppins text-base text-secondary">
+                  These members were linked to the political fringe of the
+                  former President of the country. Due to the competitor's
+                  interests in the USA and Europe and the high corruption level
+                  in the country, the investigation focused on government
+                  officials connected to the client's counterpart.
+                </p>
+                <p class="font-poppins text-base text-secondary">
+                  A comprehensive report on the corrupt activities of the former
+                  President reached a US Congressional Committee. The report was
+                  used as a primary source to sanction the former President
+                  under the Magnitsky Act, leading to the client being able to
+                  resume their concession while the counterpart couldn't engage
+                  in business with the former President.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section
+      id="contactus"
+      class="bg-bgColor py-[98px] px-4 sm:px-[80px] xl:px-[100px]"
+    >
+      <div
+        class="container mx-auto flex flex-col md:flex-row gap-[40px] xl:gap-[82px] md:items-center"
+      >
+        <div class="w-full md:w-[45%]">
+          <img
+            src="./Assets/CONTACTUS.webp"
+            alt="contact image"
+            class="w-full"
+          />
+        </div>
+        <div class="w-full md:w-[55%] flex flex-col gap-[5px]">
+          <h1
+            class="font-poppins text-h1 font-extrabold text-primary uppercase"
+          >
+            Contact Us
+          </h1>
+          <p class="font-poppins font-medium text-base text-secondary">
+            For any general inquiries, please fill in the following contact
+            form:
+          </p>
+          <form
+            action="process.php" method="post"
+            class="flex flex-row flex-wrap gap-x-[40px] gap-y-[20px] mt-[25px]"
+          >
+            <div class="w-1/3 grow flex flex-col gap-[6px]">
+              <label
+                for="first-name"
+                class="block text-sm font-poppins font-medium leading-6 text-primary capitalize"
+                >First name</label
+              >
+              <div>
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  autocomplete="given-name"
+                  placeholder="first Name" required
+                  class="block w-full bg-transparent border-0 font-poppins font-medium text-[12px] placeholder:font-poppins placeholder:font-medium placeholder:text-[12px] placeholder:capitalize py-[10px] px-[15px] text-secondary placeholder:text-#A0b1c3 outline outline-1 outline-secondary leading-[6px] focus:outline-primary focus:outline-2"
+                />
+              </div>
+            </div>
+
+            <div class="w-1/3 grow flex flex-col gap-[6px]">
+              <label
+                for="last-name"
+                class="block text-sm font-poppins font-medium leading-6 text-primary capitalize"
+                >last name</label
+              >
+              <div>
+                <input
+                  type="text"
+                  name="last-name"
+                  id="last-name"
+                  autocomplete="family-name"
+                  placeholder="last Name"
+                  required
+                  class="block w-full bg-transparent border-0 font-poppins font-medium text-[12px] placeholder:font-poppins placeholder:font-medium placeholder:text-[12px] placeholder:capitalize py-[10px] px-[15px] text-secondary placeholder:text-#A0b1c3 outline outline-1 outline-secondary leading-[6px] focus:outline-primary focus:outline-2"
+                />
+              </div>
+            </div>
+
+            <div class="w-full flex flex-col gap-[6px]">
+              <label
+                for="email-address"
+                class="block text-sm font-poppins font-medium leading-6 text-primary capitalize"
+                >Email Address</label
+              >
+              <div>
+                <input
+                  type="email"
+                  name="email-address"
+                  id="email-address"
+                  autocomplete="email"
+                  placeholder="Email Address"
+                  required
+                  class="block w-full bg-transparent border-0 font-poppins font-medium text-[12px] placeholder:font-poppins placeholder:font-medium placeholder:text-[12px] placeholder:capitalize py-[10px] px-[15px] text-secondary placeholder:text-#A0b1c3 outline outline-1 outline-secondary leading-[6px] focus:outline-primary focus:outline-2"
+                />
+              </div>
+            </div>
+
+            <div class="w-full flex flex-col gap-[6px]">
+              <label
+                for="subject"
+                class="block text-sm font-poppins font-medium leading-6 text-primary capitalize"
+                >Subject</label
+              >
+              <div>
+                <input
+                  type="subject"
+                  name="subject"
+                  id="subject"
+                  autocomplete="subject"
+                  placeholder="subject"
+                  required
+                  class="block w-full bg-transparent border-0 font-poppins font-medium text-[12px] placeholder:font-poppins placeholder:font-medium placeholder:text-[12px] placeholder:capitalize py-[10px] px-[15px] text-secondary placeholder:text-#A0b1c3 outline outline-1 outline-secondary leading-[6px] focus:outline-primary focus:outline-2"
+                />
+              </div>
+            </div>
+
+            <div class="w-full flex-col gap-[6px] hidden xl:flex">
+              <label
+                for="message"
+                class="block text-sm font-poppins font-medium leading-6 text-primary capitalize"
+                >message</label
+              >
+              <div>
+                <textarea
+                  name="message"
+                  id="message"
+                  cols="30"
+                  rows="30"
+                  autocomplete="message"
+                  placeholder="message"
+                  required
+                  class="block w-full bg-transparent border-0 font-poppins font-medium text-[12px] placeholder:font-poppins placeholder:font-medium placeholder:text-[12px] placeholder:capitalize py-[12px] px-[15px] text-secondary placeholder:text-#A0b1c3 outline outline-1 outline-secondary leading-[6px] focus:outline-primary focus:outline-2"
+                ></textarea>
+              </div>
+            </div>
+            <div class="w-full flex-col gap-[6px] xl:hidden">
+              <label
+                for="message"
+                class="block text-sm font-poppins font-medium leading-6 text-primary capitalize"
+                >message</label
+              >
+              <div>
+                <textarea
+                  name="message"
+                  id="message"
+                  cols="30"
+                  rows="12"
+                  autocomplete="message"
+                  placeholder="message"
+                  class="block w-full bg-transparent border-0 font-poppins font-medium text-[12px] placeholder:font-poppins placeholder:font-medium placeholder:text-[12px] placeholder:capitalize py-[12px] px-[15px] text-secondary placeholder:text-#A0b1c3 outline outline-1 outline-secondary leading-[6px] focus:outline-primary focus:outline-2"
+                ></textarea>
+              </div>
+            </div>
+
+            <input type="submit" value="submit" class="btn cursor-pointer w-[139px] mt-[6px] text-center font-poppins text-base font-semibold bg-primary text-white px-[5px] py-[6px] leading-8">
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-primary py-[28px] px-[16px] md:px-[100px]">
+      <div
+        class="container mx-auto flex flex-col items-center gap-3 md:flex-row md:justify-between"
+      >
+        <div class="flex flex-row gap-6">
+          <h4 class="font-poppins text-xl text-white capitalize leading-6">
+            Follow Us :
+          </h4>
+          <div class="flex gap-3">
+            <i
+              class="fa-brands fa-linkedin text-white text-[24px] cursor-pointer hover:scale-105 transition-all duration-200 ease-linear"
+            ></i>
+            <i
+              class="fa-brands fa-x-twitter text-white text-[24px] cursor-pointer hover:scale-105 transition-all duration-200 ease-linear"
+            ></i>
+          </div>
+        </div>
+        <p class="font-poppins font-medium text-base text-white leading-4">
+          © 2023 by Tevuna Insighs. Privacy Policy
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
