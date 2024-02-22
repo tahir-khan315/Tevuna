@@ -13,13 +13,13 @@ signinForm.addEventListener("submit", (event) => {
             checkStatus = 1
             break
         } 
+        if(checkStatus == 1 ) {
+            window.location.href = "./loginsuccess.html"
+        }
+        else {
+            alert("Login details are incorrect")
+            event.preventDefault()
+        }   
     }
-    if(checkStatus == 1 ) {
-        window.location.href = "loginsuccess.html"
-    }
-    else {
-        alert("Login details are incorrect")
-        event.preventDefault()
-    }   
 })
 
