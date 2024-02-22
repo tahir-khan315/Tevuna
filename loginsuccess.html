@@ -4,12 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You</title>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./input.css" />
+  <style type="text/tailwindcss">
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    .accordian-header .activeIcon {
+      @apply hidden;
+    }
+
+    .accordian-header.active .inactiveIcon {
+      @apply hidden;
+    }
+
+    .accordian-header.active .activeIcon {
+      @apply block;
+    }
+
+    @layer components {
+      .menu-items {
+        @apply font-poppins text-base font-medium text-primary hover:text-secondary  visited:font-bold transition-all duration-100 ease-linear;
+      }
+      .btn {
+        @apply hover:scale-105 transition-all duration-200 ease-linear hover:translate-y-1;
+      }
+      .accordian-header {
+        @apply py-5 px-4 cursor-pointer border-b-[1px] border-secondary;
+      }
+      .accordian-body {
+        @apply max-h-0 overflow-hidden transition-all duration-200 ease-out;
+      }
+      .items {
+        @apply px-4 py-4 shadow-md rounded-md flex flex-col gap-3 basis-[25%] flex-grow
+      }
+    }
+  </style>
+  
+  <script>
+    tailwind.config = {
+      content: ['./*.html'],
+      theme: {
+        screens: {
+          sm: '768px',      
+          md: '1024px',      
+          lg: '1280px',      
+          xl: '1440px',      
+        },
+        fontSize: {
+          sm: '0.8rem',
+          base: '1rem',
+          xl: '1.25rem',
+          'h1': '2.25rem',
+          'h2': '1.625rem',
+          'h3': '1.25rem',
+        },
+        extend: {
+          colors: {
+            primary: '#102E52',
+            secondary: "#597895",
+            bgColor: '#DEE4EA'
+          },
+        fontFamily: {
+          'poppins': ['Poppins', 'sans-serif']
+        },
+        animation: {
+          fade: 'fadeIn .5s ease-in-out',
+        },
+
+        keyframes: {
+          fadeIn: {
+            from: { opacity: 0 },
+            to: { opacity: 1 },
+          },
+        },
+        },
+      },
+      plugins: [],
+}
+  </script>
 </head>
 <body>
-    <section id="thankyou">
-        <div class="container mx-auto">
-            <h1>You have Logged in Successfully</h1>
+    <section id="thankyou" class="my-[100px] px-4 md:my-0 md:px-0">
+        <div class="container flex flex-col gap-3 items-center md:absolute md:top-[50%] md:left-[50%] md:translate-x-[-50%] md:translate-y-[-50%] md:mx-auto">
+            <h1 class="text-black text-[32px] font-bold text-center">You have Logged in Successfully</h1>
+            <p class="text-base font-semibold text-center">Thank you for choosing us. We're excited to continue this journey together.</p>
+            <a
+            href="./index.html"
+            class="btn w-[139px] mt-[6px] text-center font-poppins text-base font-semibold bg-primary text-white px-[5px] py-[6px] leading-8"
+            >Visit Home</a
+          >
         </div>
     </section>
+    <script src="./script.js"></script>
 </body>
 </html>

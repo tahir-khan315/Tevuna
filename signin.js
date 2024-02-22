@@ -15,7 +15,7 @@ signinForm.addEventListener("submit", (event) => {
         } 
     }
     if(checkStatus == 1 ) {
-        window.location.href = "index.html"
+        window.location.href = "loginsuccess.html"
     }
     else {
         alert("Login details are incorrect")
