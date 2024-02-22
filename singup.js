@@ -34,7 +34,6 @@ form.addEventListener('submit', (event) => {
     localStorage.setItem('userDetails', JSON.stringify(userData))
   }
   displayData()
-//   event.preventDefault()
 })
 
 let displayData = () => {
